@@ -11,13 +11,13 @@ function sayHi() {
 sayHi();
 ```
 
-A: Lydia and undefined
+A: `Lydia` and `undefined`
 
-B: Lydia and ReferenceError
+B: `Lydia` and `ReferenceError`
 
-C: ReferenceError and 21
+C: `ReferenceError` and `21`
 
-D: undefined and ReferenceError
+D: `undefined` and `ReferenceError`
 
 <details><summary>Answer</summary>
 <p>
@@ -187,9 +187,105 @@ Answer: A
 In JavaScript, all objects interact by reference when setting them equal to each other.
 
 First, variable `c` holds a value to an object. Later, we assign `d` with the same reference that `c` has to the object.
-
+  
+![VariableC](https://github.com/DrVicki/javascript-questions/blob/main/variablec.png)
 
 When you change one object, you change all of them.
 </p>
 </details>
 
+7. What's the output?
+
+```
+let a = 3;
+let b = new Number(3);
+let c = 3;
+
+console.log(a == b);
+console.log(a === b);
+console.log(b === c);
+```
+
+A: `true` `false` `true`
+
+B: `false` `false` `true`
+
+C: `true` `false` `false`
+
+D: `false` `true` `true`
+
+<details><summary>Answer</summary>
+<p>
+  
+Answer: C
+
+`new Number()` is a built-in function constructor. Although it looks like a number, it's not really a number: it has a bunch of extra features and is an object.
+
+When we use the `==` operator, it only checks whether it has the same value. They both have the value of `3`, so it returns `true.
+
+However, when we use the `===` operator, both value and type should be the same. It's not: new `Number()` is not a number, it's an object. Both return `false`.
+  
+  </p>
+</details>
+
+8. What's the output?
+
+```
+class Chameleon {
+  static colorChange(newColor) {
+    this.newColor = newColor;
+    return this.newColor;
+  }
+
+  constructor({ newColor = 'green' } = {}) {
+    this.newColor = newColor;
+  }
+}
+
+const freddie = new Chameleon({ newColor: 'purple' });
+console.log(freddie.colorChange('orange'));
+```
+
+A: `orange`
+
+B: `purple`
+
+C: `green`
+
+D: `TypeError`
+
+<details><summary>Answer</summary>
+<p>
+  
+Answer: D
+  
+The `colorChange` function is static. Static methods are designed to live only on the constructor in which they are created, and cannot be passed down to any children or called upon class instances. Since `freddie` is an instance of class `Chameleon`, the function cannot be called upon it. A `TypeError` is thrown.
+  
+    </p>
+</details>
+
+9. What's the output?
+
+```
+let greeting;
+greetign = {}; // Typo!
+console.log(greetign);
+```
+
+A: `{}`
+
+B: `ReferenceError: greetign is not defined`
+
+C: `undefined`
+
+<details><summary>Answer</summary>
+<p>
+  
+Answer: A
+
+  It logs the object, because we just created an empty object on the global object! When we mistyped `greeting` as `greetign`, the JS interpreter actually saw this as `global.greetign = {}` (or `window.greetign = {}` in a browser).
+
+To avoid this, we can use `"use strict"`. This makes sure you have declared a variable before setting it equal to anything.
+  
+      </p>
+</details>
