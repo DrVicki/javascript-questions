@@ -23,7 +23,7 @@ D: `undefined` and `ReferenceError`
 <p>
 Answer: D
 
-![Q1](https://github.com/DrVicki/javascript-questions/blob/main/js-ques-images/q1.gif)
+![Q1](https://github.com/DrVicki/javascript-questions/blob/main/js-ques-images/q1.png)
   
   Within the function, we first declare the name variable with the var keyword. This means that the variable gets hoisted (memory space is set up during the creation phase) with the default value of undefined, until we actually get to the line where we define the variable. We haven't defined the variable yet on the line where we try to log the name variable, so it still holds the value of undefined.
 
